@@ -25,5 +25,5 @@ True random -> true fun!
 * [rndm coin](doc/rndm_coin.md)	 - Flips coin, nothing more
 * [rndm gauss](doc/rndm_gauss.md)	 - Generates numbers from normal distribution
 * [rndm int](doc/rndm_int.md)	 - Generates integer from range
-* [rndm login](docrndm_login.md)	 - Digests your random.org api key
+* [rndm login](doc/rndm_login.md)	 - Digests your random.org api key
 
