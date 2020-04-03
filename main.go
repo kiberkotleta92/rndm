@@ -22,16 +22,9 @@ THE SOFTWARE.
 package main
 
 import (
-	"log"
 	"rndm/cmd"
-
-	"github.com/spf13/cobra/doc"
 )
 
 func main() {
-	err := doc.GenMarkdownTree(cmd.Root, "./tmp")
-	if err != nil {
-		log.Fatal(err)
-		cmd.Execute()
-	}
+	cmd.Execute()
 }

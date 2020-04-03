@@ -24,6 +24,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"rndm/random"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -47,6 +48,11 @@ For using rndm, you need to provide random.org api key, it would be written to ~
 		viper.SetConfigName(".rndm")
 		viper.SetConfigType("yaml")
 		viper.AddConfigPath(home)
+		a := &random.API{token}
+
+		if _, err := a.Coin(); err != nil {
+			return fmt.Errorf("seems like your key is bad")
+		}
 
 		viper.Set("Token", token)
 		viper.WriteConfig()
@@ -58,14 +64,4 @@ For using rndm, you need to provide random.org api key, it would be written to ~
 
 func init() {
 	rootCmd.AddCommand(loginCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// loginCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// loginCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
