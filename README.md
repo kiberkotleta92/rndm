@@ -27,3 +27,6 @@ True random -> true fun!
 * [rndm int](doc/rndm_int.md)	 - Generates integer from range
 * [rndm login](doc/rndm_login.md)	 - Digests your random.org api key
 
+## TODO
+- add pseudorandom functional
+- proof values by random.org signed api
