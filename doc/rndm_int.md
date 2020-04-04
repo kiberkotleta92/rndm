@@ -2,10 +2,6 @@
 
 Generates integer from range
 
-### Synopsis
-
-Generates integer from range
-
 ```
 rndm int [min] [max] [flags]
 ```

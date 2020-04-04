@@ -24,8 +24,9 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"rndm/random"
 	"strconv"
+
+	"github.com/kirilldenisov/rndm/random"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -33,7 +34,7 @@ import (
 
 // gaussCmd represents the gauss command
 var gaussCmd = &cobra.Command{
-	Use:   "gauss ([mean] [sd] | \"st\")",
+	Use:   "gauss ([mean] [sd] | \"std\")",
 	Short: "Generates numbers from normal distribution",
 	Long: `Generates numbers from normal distribution with given mean and standart deviation.
 	Or simply type \"st\" to use standart normal distribution (N(0,1)).

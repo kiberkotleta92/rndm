@@ -24,8 +24,9 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"rndm/random"
 	"strconv"
+
+	"github.com/kirilldenisov/rndm/random"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

@@ -1,6 +1,6 @@
 # rndm
 
-Command line app abusing random.org API
+Command line app abusing [RANDOM.ORG JSON-RPC API](https://api.random.org/json-rpc/2)
 
 ### Synopsis
 ```
@@ -19,6 +19,11 @@ Command line app abusing random.org API
 ```
 rndm is the most joyful and useful cli app you'll ever see! 
 True random -> true fun!
+
+### Installation
+```
+go get github.com/kirilldenisov/rndm/...
+```
 
 ### SEE ALSO
 

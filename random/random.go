@@ -23,12 +23,12 @@ THE SOFTWARE.
 package random
 
 import (
-	"encoding/json"
+	"bytes"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"strconv"
 	"strings"
-
-	"github.com/valyala/fasthttp"
 )
 
 //format formats set of numbers to common array types for easy copy-pasting
@@ -53,7 +53,6 @@ func format(format string, arr []float64) string {
 func sendRequest(name string, params interface{}) ([]interface{}, error) {
 	var responseStruct RandomResponse
 	var err error
-	client := fasthttp.Client{}
 
 	requestStruct := RandomRequest{
 		Jsonrpc: "2.0",
@@ -61,26 +60,21 @@ func sendRequest(name string, params interface{}) ([]interface{}, error) {
 		Params:  params,
 	}
 
-	req := fasthttp.AcquireRequest()
-	defer fasthttp.ReleaseRequest(req)
-
-	resp := fasthttp.AcquireResponse()
-	defer fasthttp.ReleaseResponse(resp)
-
-	requestBody, err := json.Marshal(requestStruct)
+	requestBody, err := requestStruct.MarshalJSON()
 	if err != nil {
 		return nil, fmt.Errorf("request json marshal: %s", err)
 	}
+	req := bytes.NewReader(requestBody)
 
-	req.SetRequestURI("https://api.random.org/json-rpc/1/invoke")
-	req.SetBody(requestBody)
-
-	err = client.Do(req, resp)
+	resp, err := http.Post("https://api.random.org/json-rpc/1/invoke", "", req)
 	if err != nil {
 		return nil, fmt.Errorf("sending request: %s", err)
 	}
 
-	err = json.Unmarshal(resp.Body(), &responseStruct)
+	defer resp.Body.Close()
+	respBody, err := ioutil.ReadAll(resp.Body)
+
+	err = responseStruct.UnmarshalJSON(respBody)
 	if err != nil {
 		return nil, fmt.Errorf("response json unmarshal: %s", err)
 	}

@@ -2,10 +2,6 @@
 
 Flips coin, nothing more
 
-### Synopsis
-
-Flips coin, nothing more
-
 ```
 rndm coin [flags]
 ```

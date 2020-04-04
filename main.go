@@ -22,7 +22,7 @@ THE SOFTWARE.
 package main
 
 import (
-	"rndm/cmd"
+	"github.com/kirilldenisov/rndm/cmd"
 )
 
 func main() {
