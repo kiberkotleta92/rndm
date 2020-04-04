@@ -22,7 +22,7 @@ True random -> true fun!
 
 ### Installation
 ```
-go get github.com/kirilldenisov/rndm/...
+go get -u github.com/kirilldenisov/rndm/...
 ```
 
 ### SEE ALSO
